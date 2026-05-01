@@ -5,7 +5,8 @@ import numpy as np
 import imageio.v3 as iio
 import cv2
 
-ICC_PATH = "C:/Users/Niranjan H/Downloads/rf/ProPhoto.icc"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ICC_PATH = os.path.join(BASE_DIR, "ProPhoto.icc")
 
 # =========================
 # 🔐 ENCRYPTION

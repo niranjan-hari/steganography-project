@@ -1,7 +1,5 @@
 from flask import Flask, request, render_template, send_file
 import os
-
-# import your code file (save your original file as stego.py)
 import stego
 
 app = Flask(__name__)
@@ -60,8 +58,6 @@ def decode_route():
 
     return f"<h2>Message:</h2><p>{message}</p>"
 
-
-import os
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))

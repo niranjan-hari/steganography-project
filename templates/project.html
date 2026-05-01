@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steganography Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🔐 Image Steganography Tool</h1>
+    <p class="subtitle">Securely hide and extract messages inside images</p>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button class="active" onclick="showTab('encode', this)">Encode</button>
+        <button onclick="showTab('decode', this)">Decode</button>
+    </div>
+
+    <!-- ENCODE -->
+    <div id="encode" class="tab-content">
+        <h2>Hide Message</h2>
+
+        <form action="/encode" method="POST" enctype="multipart/form-data">
+            
+            <label>Upload Image</label>
+            <input type="file" name="image" accept="image/*" required>
+
+            <label>Secret Message</label>
+            <textarea name="message" placeholder="Enter your secret message..." required></textarea>
+
+            <button type="submit">🔐 Encode & Download</button>
+        </form>
+    </div>
+
+    <!-- DECODE -->
+    <div id="decode" class="tab-content hidden">
+        <h2>Extract Message</h2>
+
+        <form action="/decode" method="POST" enctype="multipart/form-data">
+            
+            <label>Upload Encoded Image</label>
+            <input type="file" name="image" accept="image/*" required>
+
+            <label>Encryption Key</label>
+            <input type="text" name="key" placeholder="Enter your key" required>
+
+            <label>Bit Length</label>
+            <input type="number" name="bit_length" placeholder="Enter bit length" required>
+
+            <button type="submit">🔓 Decode Message</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+function showTab(tab, btn) {
+    document.getElementById("encode").classList.add("hidden");
+    document.getElementById("decode").classList.add("hidden");
+
+    document.getElementById(tab).classList.remove("hidden");
+
+    // active button styling
+    document.querySelectorAll(".tabs button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+}
+</script>
+
+</body>
+</html>
